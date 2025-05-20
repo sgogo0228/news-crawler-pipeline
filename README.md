@@ -33,6 +33,14 @@ python scripts/msg2admin.py
 
 - Each script is designed to run independently and save outputs as text files in your working directory. Some steps may require manual review or input.
 
+## Example Outputs
+
+- `examples/txt/fb_output.txt`: 粉絲頁貼文彙整範例（由 `search_fb_news.py` 產生）
+- `examples/txt/google_output.txt`: Google 新聞搜尋輸出（由 `search_google_news.py` 產生）
+- `examples/txt/scraped_news.txt`: 擷取新聞標題與內文（`scrap_one_news.py`）
+- `examples/txt/admin_msg.txt`: 自動化格式回報（`msg2admin.py`）
+- `examples/img/`: 擷取的新聞配圖範例
+
 ## Project Structure
 news-crawler-pipeline\
 ├── README.md\
@@ -43,7 +51,13 @@ news-crawler-pipeline\
 │   ├── scrap_one_news.py\
 │   └── msg2admin.py\
 ├── examples\
-└── main.py
+│   ├── txt\
+│   │    ├── fb_news.txt\
+│   │    ├── google_news.txt\
+│   │    ├── one_news.txt\
+│   │    └── msg2admin.txt\
+│   └── img\
+└── my_fb_graphql_scraper
 
 
 ## Notes
