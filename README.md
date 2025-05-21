@@ -1,6 +1,6 @@
 # News Crawler Pipeline｜新聞爬蟲自動整理系統
 
-News Crawler Pipeline is a modular Python-based automation system that collects content from Facebook pages and Google News. It is designed to support social media content planning and internal reporting by streamlining the process of gathering, extracting, and formatting news-related information.
+News Crawler Pipeline is a modular Python-based automation system that collects content from Facebook pages and Google News. It is designed to support social media content planning and internal reporting by streamlining the process of gathering, extracting, and formatting news-related information.\
 本系統為一套模組化的 Python 自動化工具，協助從 Facebook 粉專與 Google News 擷取新聞資訊，整合為貼文規劃與主管彙報使用，減少人工搜尋與資料整理的工作量。
 
 ---
