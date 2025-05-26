@@ -101,12 +101,12 @@ news-crawler-pipeline/
 
 ---
 ## 📎 Notes｜備註
-- This project uses Selenium for web scraping. You need to install the appropriate browser driver based on your browser version.
-本專案使用 Selenium 進行爬蟲，需下載對應的瀏覽器驅動程式。
-If you're using Google Chrome, download the matching version of ChromeDriver.
+- This project uses Selenium for web scraping. You need to install the appropriate browser driver based on your browser version.  
+本專案使用 Selenium 進行爬蟲，需下載對應的瀏覽器驅動程式。  
+If you're using Google Chrome, download the matching version of ChromeDriver (https://sites.google.com/chromium.org/driver/).  
 如果使用 Chrome，請下載對應版本的 ChromeDriver
 
-- By default, scraped results (text and screenshots) are saved in 'example/txt/' and 'example/img/', and you can modify these paths in the scripts as needed.
+- By default, scraped results (text and screenshots) are saved in 'example/txt/' and 'example/img/', and you can modify these paths in the scripts as needed.  
 預設輸出路徑為 example/txt/ 和 example/img/，請依照需要修改腳本中的儲存路徑。
 
 
