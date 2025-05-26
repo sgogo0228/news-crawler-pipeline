@@ -1,4 +1,7 @@
 # 爬FB的新聞
+if __name__ == "__main__":
+    import sys, os
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from setuptools import setup
 from my_fb_graphql_scraper.facebook_graphql_scraper import FacebookGraphqlScraper as fb_graphql_scraper
 
@@ -27,8 +30,8 @@ facebook_user_list = [['北榮臺東', '100063930725320'],
 user_num = len(facebook_user_list)
 n = 0
 
-path = r'.\example\txt\fbnews.txt'
-driver_path = r".\chromedriver-win64\chromedriver-win64\chromedriver.exe" 
+path = r'C:\Users\sgogo\python_code\example\txt\fb_news.txt'
+driver_path = r"C:\Users\sgogo\python_code\chromedriver-win64\chromedriver-win64\chromedriver.exe" 
 fb_spider = fb_graphql_scraper(driver_path=driver_path)
 
 with open(path, 'w', encoding='UTF-8') as f:

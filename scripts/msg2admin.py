@@ -2,19 +2,22 @@
 # facebook_graphql_scraper.py、parser.py、utils.py都有修改，若內文有直接引用其他粉絲頁，fb回傳的json會包括內文和被引用的貼文，
 # 且其中被引用的貼文會在封包更前面的位置，所以會抓到錯的時間，因此要傳入facebook_user_id去過濾
 # (經過觀察json檔，data['story']['url']內的資料可以用來判斷是來自哪個粉絲頁)
+if __name__ == "__main__":
+    import sys, os
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from setuptools import setup
 from my_fb_graphql_scraper.facebook_graphql_scraper import FacebookGraphqlScraper as fb_graphql_scraper
 from datetime import timedelta
 import os
 
-days_limit = int(input('要抓過去幾天內的資料(預設為1天): ') or '1') # Number of days within which to scrape posts
-post_limit = int(input('要抓幾筆(預設為1筆): ') or '1')
-# days_limit = 1      # Number of days within which to scrape posts
-# post_limit = 1
+# days_limit = int(input('要抓過去幾天內的資料(預設為1天): ') or '1') # Number of days within which to scrape posts
+# post_limit = int(input('要抓幾筆(預設為1筆): ') or '1')
+days_limit = 1      # Number of days within which to scrape posts
+post_limit = 2
 
 facebook_user = ['vacweb1', '100067963924922']
-path = r'.\example\txt\msg2admin.txt'
-driver_path = r".\chromedriver-win64\chromedriver-win64\chromedriver.exe" 
+path = r'C:\Users\sgogo\python_code\example\txt\msg2admin.txt'
+driver_path = r"C:\Users\sgogo\python_code\chromedriver-win64\chromedriver-win64\chromedriver.exe" 
 fb_spider = fb_graphql_scraper(driver_path=driver_path)
 
 msg = '謝謝'

@@ -82,25 +82,34 @@ python scripts/msg2admin.py
 
 ---
 ## 📁 Project Structure｜專案結構
-news-crawler-pipeline\
-├── README.md\
-├── requirements.txt\
-├── scripts\
-│   ├── search_fb_news.py\
-│   ├── search_google_news.py\
-│   ├── scrap_one_news.py\
-│   └── msg2admin.py\
-├── examples\
-│   ├── txt\
-│   │    ├── fb_news.txt\
-│   │    ├── google_news.txt\
-│   │    ├── one_news.txt\
-│   │    └── msg2admin.txt\
-│   └── img\
-└── my_fb_graphql_scraper
+```python
+news-crawler-pipeline/
+├── example/ # 範例輸出資料
+│ ├── img/ # 儲存圖片截圖
+│ └── txt/ # 儲存文字輸出（fb_news.txt, google_news.txt, 等）
+├── my_fb_graphql_scraper/ # customed module 修改版FB爬蟲模組
+├── scripts/ # 主執行腳本
+│ ├── msg2admin.py
+│ ├── scrap_one_news.py
+│ ├── search_fb_news.py
+│ └── search_google_news.py
+├── util/ # 公用模組
+│ └── locator.py # selector 定位器
+├── requirements.txt # 套件安裝清單
+└── README.md
+```
 
 ---
 ## 📎 Notes｜備註
+- This project uses Selenium for web scraping. You need to install the appropriate browser driver based on your browser version.
+本專案使用 Selenium 進行爬蟲，需下載對應的瀏覽器驅動程式。
+If you're using Google Chrome, download the matching version of ChromeDriver.
+如果使用 Chrome，請下載對應版本的 ChromeDriver
+
+- By default, scraped results (text and screenshots) are saved in 'example/txt/' and 'example/img/', and you can modify these paths in the scripts as needed.
+預設輸出路徑為 example/txt/ 和 example/img/，請依照需要修改腳本中的儲存路徑。
+
+
 - This project was developed to streamline the collection and dissemination of news content across internal and public channels.\
 本專案旨在簡化社群與內部新聞彙整流程，減少人工處理與資訊遺漏。
 

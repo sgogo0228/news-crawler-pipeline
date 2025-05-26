@@ -1,7 +1,10 @@
+if __name__ == "__main__":
+    import sys, os
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from new_locator.locator import *
+from util.locator import *
 import requests
 import re, time
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,7 +13,12 @@ from selenium.webdriver.support import expected_conditions as EC
 # for f in glob.glob("news_img*"):
 #     os.remove(f)
 
-driver_path = r".\chromedriver-win64\chromedriver-win64\chromedriver.exe"
+driver_path = r"C:\Users\sgogo\python_code\chromedriver-win64\chromedriver-win64\chromedriver.exe"
+content_path = r"C:\Users\sgogo\python_code\example\txt\one_news.txt"
+img_path = r"C:\Users\sgogo\python_code\example\img"
+# url = input("請輸入網址：")
+url = "https://pets.ettoday.net/news/2963625"
+
 svc = Service(driver_path)
 driver = webdriver.Chrome(service=svc)
 # url = "https://newstaiwan.net/2025/05/06/310893/" #台灣好報
@@ -36,9 +44,6 @@ driver = webdriver.Chrome(service=svc)
 # url = "https://www.taiwantimes.com.tw/app-container/app-content/new/new-content-detail?blogId=blog-38caf962-5bb4-46d3-9bd8-39ba550cc216" #臺灣時報
 # url = 'https://www.ydn.com.tw/news/newsInsidePage?chapterID=1764870' #青年日報 圖片特規 div[style*=background][style*=url]
 # url = "https://tw.news.yahoo.com/%E5%8C%97%E6%A6%AE%E8%AD%B7%E7%90%86%E5%BE%B5%E6%89%8D%E5%8D%9A%E8%A6%BD%E6%9C%83-ai%E7%A7%91%E6%8A%80%E8%88%87%E9%A3%AF%E5%BA%97%E7%B4%9A%E5%AE%BF%E8%88%8D%E6%89%93%E9%80%A0%E5%8F%8B%E5%96%84%E8%81%B7%E5%A0%B4-%E7%8F%BE%E5%A0%B4%E8%BF%91%E7%99%BE%E4%BD%8D%E4%BA%BA%E5%93%A1%E5%85%B1%E8%A5%84%E7%9B%9B%E8%88%89-025952324.html" #奇摩新聞 網站內文高度特規 #Masterwrap
-# url = input("請輸入網址：")
-
-url = "https://pets.ettoday.net/news/2963625"
 
 driver.get(url)
 time.sleep(1)
@@ -77,11 +82,11 @@ msg = re.sub(r' ', '　', msg)
 msg = re.sub(r'(?<!\d),|,(?<!\d)', '，', msg)
 msg = re.sub(r';', '；', msg)
 msg = re.sub(r'(?<!\d)-|-(?<!\d)', '－', msg)
-msg = re.sub(r'(?<!\d)\.|\.(?<!\d)', '。', msg)
+msg = re.sub(r'(?<!\d)\.|\.(?!\d)', '。', msg)
 msg = re.sub(r'(?<!\d):|:(?<!\d)', '：', msg)
 
 msg = msg + url
-with open(rf".\example\txt\one_news.txt", 'w', encoding='utf-8') as f:
+with open(content_path, 'w', encoding='utf-8') as f:
     f.write(msg)
 
 title = re.sub('[^\u4E00-\u9FFF]', '', title)
@@ -108,10 +113,10 @@ for img in imgs:
                 driver2 = webdriver.Chrome(service=svc)
                 driver2.get(src)
                 img = driver2.find_element(By.TAG_NAME, "img")
-                img.screenshot(rf".\img\{n}_{title}img.jpg")
+                img.screenshot(rf"{img_path}\{n}_{title}img.jpg")
                 driver2.quit()
             else:
-                open(rf".\example\img\{n}_{title}img.jpg", 'wb').write(r.content)
+                open(rf"{img_path}\{n}_{title}img.jpg", 'wb').write(r.content)
 
             n += 1
 test = input("any")
