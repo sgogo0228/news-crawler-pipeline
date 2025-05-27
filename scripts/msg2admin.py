@@ -13,7 +13,7 @@ import os
 # days_limit = int(input('要抓過去幾天內的資料(預設為1天): ') or '1') # Number of days within which to scrape posts
 # post_limit = int(input('要抓幾筆(預設為1筆): ') or '1')
 days_limit = 1      # Number of days within which to scrape posts
-post_limit = 2
+post_limit = 3
 
 facebook_user = ['vacweb1', '100067963924922']
 path = r'C:\Users\sgogo\python_code\example\txt\msg2admin.txt'

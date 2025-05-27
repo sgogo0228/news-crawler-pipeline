@@ -17,7 +17,7 @@ driver_path = r"C:\Users\sgogo\python_code\chromedriver-win64\chromedriver-win64
 content_path = r"C:\Users\sgogo\python_code\example\txt\one_news.txt"
 img_path = r"C:\Users\sgogo\python_code\example\img"
 # url = input("請輸入網址：")
-url = "https://pets.ettoday.net/news/2963625"
+url = "https://www.tristarnews.com.tw/news_ii.html?ID=30583"
 
 svc = Service(driver_path)
 driver = webdriver.Chrome(service=svc)
@@ -62,7 +62,10 @@ for i in range(1, body_height-1000, 200):
 if 'youngnews' in url or 'old.ksnews' in url or 'anntw' in url or 'www.ydn.com' in url or 'cnews.com' in url:
     title = driver.title
 else:
-    title = driver.find_element(By.CSS_SELECTOR, element_path.GENERAL_TITLE_PATH).text
+    try:
+        title = driver.find_element(By.CSS_SELECTOR, element_path.GENERAL_TITLE_PATH).text
+    except:
+        title = driver.title
 # title = driver.find_element(By.CSS_SELECTOR, ':has(h1):not(:has(img~h1, h1~img)) h1:not(:has(img))').text
     
 # contents = driver.find_elements(By.CSS_SELECTOR, 'p:not([class]):not([style]), div.edit.news_edit, div.article-content-edtor, div.article_content')
@@ -116,7 +119,7 @@ for img in imgs:
                 img.screenshot(rf"{img_path}\{n}_{title}img.jpg")
                 driver2.quit()
             else:
-                open(rf"{img_path}\{n}_{title}img.jpg", 'wb').write(r.content)
+                open(rf"{img_path}\{title}img_{n}.jpg", 'wb').write(r.content)
 
             n += 1
 test = input("any")
