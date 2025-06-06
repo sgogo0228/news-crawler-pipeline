@@ -6,9 +6,9 @@ def show_progress(cur, total):
     ratio = cur/total
     print("\r", int(ratio*100), "% | ", "██"*int(20*ratio), "  "*(20-int(20*ratio)), " |", sep="", end="")
 
-max_count = int(input("每間榮院新聞紀錄數量上限(預設為5筆)：") or "5")
-# max_count = 5
-path = r'C:\Users\sgogo\python_code\example\txt\google_news.txt'
+# max_count = int(input("每間榮院新聞紀錄數量上限(預設為5筆)：") or "5")
+max_count = 5
+path = r'.\example\txt\google_news.txt'
 key_list = ['北榮臺東', '北榮鳳林', '北榮玉里', '北榮蘇澳', '北榮員山', '高榮臺南', '中榮灣橋', '中榮埔里', '中榮嘉義', '屏榮龍泉', 
             '屏榮', '高榮', '北榮桃園', '北榮新竹', '臺中榮總', '臺北榮總']
 key_num = len(key_list)

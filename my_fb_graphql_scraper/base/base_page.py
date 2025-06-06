@@ -11,6 +11,9 @@ class BasePage(object):
         chrome_options.add_argument("--disable-blink-features=AutomationControlled")
         chrome_options.add_argument("--headless=new")
         chrome_options.add_argument("--blink-settings=imagesEnabled=false")
+        chrome_options.add_argument("--ignore-certificate-errors")
+        chrome_options.add_argument("--blink-settings=imagesEnabled=false")
+
         svc = Service(driver_path)
-        self.driver = webdriver.Chrome(service=svc,options=chrome_options)
+        self.driver = webdriver.Chrome(service=svc, chrome_options=chrome_options)
         self.driver.maximize_window()

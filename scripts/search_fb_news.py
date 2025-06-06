@@ -9,8 +9,10 @@ def show_progress(cur, total):
     ratio = cur/total
     print("\r", int(ratio*100), "% | ", "██"*int(20*ratio), "  "*(20-int(20*ratio)), " |", sep="", end="")
 
-days_limit = int(input('要抓過去幾天內的資料(預設為1天): ') or '1') # Number of days within which to scrape posts
-# day_limit = 1
+# days_limit = int(input('要抓過去幾天內的資料(預設為1天): ') or '1') # Number of days within which to scrape posts
+days_limit = 2
+path = r'.\example\txt\fb_news.txt'
+driver_path = r".\chromedriver-win64\chromedriver-win64\chromedriver.exe" 
 
 facebook_user_list = [['北榮臺東', '100063930725320'], 
                       ['北榮鳳林', '100057305747373'], 
@@ -30,8 +32,6 @@ facebook_user_list = [['北榮臺東', '100063930725320'],
 user_num = len(facebook_user_list)
 n = 0
 
-path = r'C:\Users\sgogo\python_code\example\txt\fb_news.txt'
-driver_path = r"C:\Users\sgogo\python_code\chromedriver-win64\chromedriver-win64\chromedriver.exe" 
 fb_spider = fb_graphql_scraper(driver_path=driver_path)
 
 with open(path, 'w', encoding='UTF-8') as f:

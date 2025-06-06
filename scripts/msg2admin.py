@@ -13,11 +13,11 @@ import os
 # days_limit = int(input('要抓過去幾天內的資料(預設為1天): ') or '1') # Number of days within which to scrape posts
 # post_limit = int(input('要抓幾筆(預設為1筆): ') or '1')
 days_limit = 1      # Number of days within which to scrape posts
-post_limit = 3
+post_limit = 2
 
 facebook_user = ['vacweb1', '100067963924922']
-path = r'C:\Users\sgogo\python_code\example\txt\msg2admin.txt'
-driver_path = r"C:\Users\sgogo\python_code\chromedriver-win64\chromedriver-win64\chromedriver.exe" 
+path = r'.\example\txt\msg2admin.txt'
+driver_path = r".\chromedriver-win64\chromedriver-win64\chromedriver.exe" 
 fb_spider = fb_graphql_scraper(driver_path=driver_path)
 
 msg = '謝謝'
@@ -27,18 +27,25 @@ if pre_str != '':
     pre_str = pre_str[:-2] + '\n'
 
 with open(path, 'w', encoding='UTF-8') as f:
-    res1 = fb_spider.get_user_posts(fb_username_or_userid=facebook_user[0], days_limit=days_limit,display_progress=False)
+    # res1 = fb_spider.get_user_posts(fb_username_or_userid=facebook_user[0], days_limit=days_limit,display_progress=False)
     res2 = fb_spider.get_user_posts(fb_username_or_userid=facebook_user[1], days_limit=days_limit,display_progress=False)
     post_count = 0
-    for one_post in res1['data']:
-        if '#就醫保健處' in one_post['context']:
-            one_post['published_date'] += timedelta(hours=8)
-            title = one_post['context'].splitlines()[1]
-            msg = '\n這是' + one_post['published_date'].strftime('%m%d %H%M') + '的FB貼文\n' + \
-                 title + \
-                '\n輔導會 https://www.facebook.com/vacweb1/posts/' + one_post['post_id'] + \
-                '\n就醫處 https://www.facebook.com/100067963924922/posts/' + res2['data'][post_count]['post_id'] + '\n' + msg
-            post_count += 1
+    for one_post in res2['data']:
+        one_post['published_date'] += timedelta(hours=8)
+        title = one_post['context'].splitlines()[0]
+        msg = '\n這是' + one_post['published_date'].strftime('%m%d %H%M') + '的FB貼文\n' + \
+            title + \
+            '\n輔導會 ' + \
+            '\n就醫處 https://www.facebook.com/100067963924922/posts/' + one_post['post_id'] + '\n' + msg
+        post_count += 1
+        # if '#就醫保健處' in one_post['context']:
+        #     one_post['published_date'] += timedelta(hours=8)
+        #     title = one_post['context'].splitlines()[1]
+        #     msg = '\n這是' + one_post['published_date'].strftime('%m%d %H%M') + '的FB貼文\n' + \
+        #          title + \
+        #         '\n輔導會 https://www.facebook.com/vacweb1/posts/' + one_post['post_id'] + \
+        #         '\n就醫處 https://www.facebook.com/100067963924922/posts/' + res2['data'][post_count]['post_id'] + '\n' + msg
+        #     post_count += 1
         if post_count >= post_limit:
             break
     f.write(pre_str + msg[1:])

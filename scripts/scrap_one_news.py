@@ -13,11 +13,11 @@ from selenium.webdriver.support import expected_conditions as EC
 # for f in glob.glob("news_img*"):
 #     os.remove(f)
 
-driver_path = r"C:\Users\sgogo\python_code\chromedriver-win64\chromedriver-win64\chromedriver.exe"
-content_path = r"C:\Users\sgogo\python_code\example\txt\one_news.txt"
-img_path = r"C:\Users\sgogo\python_code\example\img"
+driver_path = r".\chromedriver-win64\chromedriver-win64\chromedriver.exe"
+content_path = r".\example\txt\one_news.txt"
+img_path = r".\example\img"
 # url = input("請輸入網址：")
-url = "https://www.tristarnews.com.tw/news_ii.html?ID=30583"
+url = "https://focusnews.com.tw/2025/06/649697/"
 
 svc = Service(driver_path)
 driver = webdriver.Chrome(service=svc)
@@ -122,5 +122,5 @@ for img in imgs:
                 open(rf"{img_path}\{title}img_{n}.jpg", 'wb').write(r.content)
 
             n += 1
-test = input("any")
+input("\npuase")
 driver.quit()
